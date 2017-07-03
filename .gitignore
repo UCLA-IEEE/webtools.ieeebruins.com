@@ -6,3 +6,5 @@
 default.html
 .DS_Store
 _site/
+dbUsername.txt
+dbPassword.txt
