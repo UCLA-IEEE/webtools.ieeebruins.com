@@ -1,2 +1,15 @@
-# Use PHP5.6 as default
-AddHandler application/x-httpd-php56 .php
+# For security reasons, Option followsymlinks cannot be overridden.
+#Options +FollowSymLinks
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+# MAIN ROUTES
+RewriteRule ^about$ ./views/about.php
+
+# ERROR PAGES
+ErrorDocument 404 /404.shtml
