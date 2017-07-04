@@ -11,8 +11,23 @@
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- STYLESHEETS -->
+    <link rel='stylesheet' href='../public/css/navbar.css' />
+    <link rel='stylesheet' href='../public/css/footer.css' />
+
+    <!-- JS -->
+    <script src='../public/js/navbar.js'></script>
 </head>
 <body>
+
+    <!-- NAVBAR -->
+    <?php include('./includes/navbar.html'); ?>
+
     <p>Hello, this is the About page!</p>
+
+    <!-- FOOTER -->
+    <?php include('./includes/footer.html'); ?>
+
 </body>
 </html>

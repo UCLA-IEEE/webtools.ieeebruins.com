@@ -8,3 +8,4 @@ default.html
 _site/
 dbUsername.txt
 dbPassword.txt
+serverIPAddress.txt

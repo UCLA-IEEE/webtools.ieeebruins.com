@@ -14,8 +14,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- STYLESHEETS -->
-    <link rel='stylesheet' href='./reimbursements/public/style.css' />
-    <link rel='stylesheet' href='./reimbursements/public/form.css' />
+    <link rel='stylesheet' href='./public/style.css' />
+    <link rel='stylesheet' href='./public/form.css' />
+    <link rel='stylesheet' href='../public/css/navbar.css' />
+    <link rel='stylesheet' href='../public/css/footer.css' />
+
+    <!-- JS -->
+    <script src='../public/js/navbar.js'></script>
 </head>
 <body>
 
@@ -26,7 +31,7 @@
     <div class="form-wrapper">
         <h1 class="text-center">Reimbursement Form</h1>
 
-        <form enctype="multipart/form-data" action="./reimbursements/db/submitReimbursement.php" method="POST" class="form">
+        <form enctype="multipart/form-data" action="./db/submitReimbursement.php" method="POST" class="form">
             <!-- NAME -->
             <div class="form-group">
                 <label for="name" class="control-label">Name</label>
