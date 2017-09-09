@@ -5,6 +5,7 @@ define('APP', ROOT . 'app' . DIRECTORY_SEPARATOR);
 define('VIEWS', ROOT . 'views' . DIRECTORY_SEPARATOR);
 define('CORE', APP . 'core' . DIRECTORY_SEPARATOR);
 define('CONTROLLERS', APP . 'controllers' . DIRECTORY_SEPARATOR);
+define('MODELS', APP . 'models' . DIRECTORY_SEPARATOR);
 
 require_once APP . 'config/index.php';
 require_once ROOT . 'App.php';
