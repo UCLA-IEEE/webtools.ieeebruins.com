@@ -1,0 +1,14 @@
+/* GLOBAL STYLESHEET: FORM.CSS
+ * Unified form styling for form elements throughout the webtools platform
+ */
+
+.webtools-form input[type='text'],
+.webtools-form input[type='text']:focus,
+.webtools-form textarea,
+.webtools-form textarea:focus {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: solid 1px black;
+}
