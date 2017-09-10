@@ -15,7 +15,7 @@
               <ul class="dropdown-menu">
                   <li><a href='/reimbursements'>Reimbursements</a></li>
                   <li><a href="/reimbursements/browse">Browse</a></li>
-                  <li><a href="http://webtools.ieeebruins.org/review">Review</a></li>
+                  <li><a href="/reimbursements/review">Review</a></li>
               </ul>
           </li>
           <li><a href='/announcements'>Announcmenets</a></li>

@@ -18,7 +18,17 @@ class ReimbursementsController extends Controller
 
     public function browse()
     {
+        $reimbursement = new Reimbursement($this->databaseConnection);
+        $reimbursements = $reimbursement->find();
+        foreach ($reimbursements as $reimbursement) {
+            $this->formatReimbursement($reimbursement);
+        }
         require_once VIEWS . 'reimbursements/browse.php';
+    }
+
+    public function review()
+    {
+        require_once VIEWS . 'reimbursements/review.php';
     }
 
     private function getReimbursements()
@@ -83,5 +93,42 @@ class ReimbursementsController extends Controller
         } else {
             $this->respond('success', 'Successfully removed all reimbursements from the database!');
         }
+    }
+
+    private function formatReimbursement($reimbursement)
+    {
+        // format approval
+        if ($reimbursement->approve === '0') {
+            $reimbursement->approve = 'Pending';
+        } else if ($reimbursement->approve === '1') {
+            $reimbursement->approve = 'Approved';
+        } else {
+            $reimbursement->approve = 'Denied';
+        }
+
+        // format receipt link
+        $reimbursement->link = '<a href="' . substr($reimbursement->link, 1) . '" target="blank">Receipt</a>';
+
+        // format submission time
+        $timeAndDateArray = explode(' ', $reimbursement->time);
+        $date = explode('-', $timeAndDateArray[0]);
+        $date = $date[1] . '/' . $date[2] . '/' . $date[0];
+        $time = explode(':', $timeAndDateArray[1]);
+        $AM = $time[0] - 12 < 0 ? 'AM' : 'PM';
+        $time[0] = $time[0] % 12;
+        unset($time[2]);
+        $time = $time[0] . ':' . $time[1] . ' ' . $AM;
+
+        $reimbursement->time = $date . ' ' . $time;
+
+        // format reimbursement status
+        if ($reimbursement->reimbursed === '0') {
+            $reimbursement->reimbursed = 'No';
+        } else {
+            $reimbursement->reimbursed = 'Yes. <br />Check# :' . $reimbursement->check;
+        }
+
+        // remove check field from reimbursement object
+        unset($reimbursement->check);
     }
 }

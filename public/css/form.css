@@ -12,3 +12,9 @@
   box-shadow: none;
   border-bottom: solid 1px black;
 }
+
+.webtools-form select,
+.webtools-form select:focus {
+  border-color: black;
+  box-shadow: none;
+}
