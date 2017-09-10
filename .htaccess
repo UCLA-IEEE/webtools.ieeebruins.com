@@ -1,6 +1,6 @@
 RewriteEngine on
 
-RewriteCond %{REQUEST_URI} !^/(.*)(php|htm|html|gif|jpg|gif|png|css|js|txt)$
+RewriteCond %{REQUEST_URI} !^/(.*)(php|htm|html|gif|jpg|gif|png|css|js|txt|pdf)$
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

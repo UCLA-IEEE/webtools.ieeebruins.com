@@ -8,6 +8,7 @@
 
     <!-- JQUERY -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js'></script>
 
     <!-- BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -28,7 +29,7 @@
         <h1 class="col-md-6 col-md-offset-3 text-center">Reimbursement Form</h1>
 
         <div class="col-md-6 col-md-offset-3">
-            <form class="form webtools-form reimbursement-form" enctype='multipart/form-data'>
+            <form class="form webtools-form reimbursement-form" method='POST' action='/reimbursements' enctype='multipart/form-data'>
                 <div class="form-group">
                     <label for="name" class="control-label">Name</label>
                     <input type="text" class="form-control" name="name" required>
@@ -49,7 +50,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="MAX_FILE_SIZE" value="20000000"/>
                     <label for="file" class="control-label">Upload a receipt<br/>(2MB size limit. JPEG/PDF only)</label>
                     <input class="form-control" name="receipt" type="file" required/>
                 </div>
@@ -57,6 +57,7 @@
                     <button type="submit" class="btn btn-primary form-control">Submit</button>
                 </div>
             </form>
+            <p class='status-message'></p>
         </div>
     </div>
 </body>

@@ -48,6 +48,6 @@ class Model
 
         $query = $this->db->prepare($sql);
 
-        return $query->execute();;
+        return $query->execute();
     }
 }

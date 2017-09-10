@@ -6,5 +6,9 @@
 default.html
 .DS_Store
 _site/
+
+# config file
 config.php
 
+# all receipts
+receipts/
