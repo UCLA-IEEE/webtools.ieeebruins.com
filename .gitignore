@@ -12,3 +12,6 @@ config.php
 
 # all receipts
 receipts/
+
+# htpasswd
+.htpasswd
