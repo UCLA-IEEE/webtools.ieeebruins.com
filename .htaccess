@@ -6,4 +6,17 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 
+SetEnvIf Request_URI ^/reimbursements/review require_auth=true
+SetEnvIf Request_URI ^/reimbursements/browse require_auth=true
+
+AuthUserFile ".htpasswd"
+AuthName "Password Protected"
+AuthType Basic
+
+Order Allow,Deny
+Satisfy any
+Allow from all
+Require valid-user
+Deny from require_auth=true
+
 RewriteRule ^(.*)$ /index.php/$1 [PT]
