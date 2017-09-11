@@ -20,9 +20,13 @@ class Model
         }
     }
 
-    public function find()
+    public function find($params=array())
     {
-        $sql = 'SELECT * FROM ' . $this->tableName . ';';
+        $sql = 'SELECT * FROM ' . $this->tableName;
+        foreach ($params as $key => $value) {
+            $sql = $sql . " WHERE " . $key . "=" . $value;
+        }
+        $sql = $sql . ';';
         $query = $this->db->prepare($sql);
         $query->execute();
 

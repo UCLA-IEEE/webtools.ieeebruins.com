@@ -16,6 +16,9 @@
     <!-- STYLESHEETS -->
     <link rel='stylesheet' type='text/css' href='/public/css/style.css' />
     <link rel='stylesheet' type='text/css' href='/public/css/form.css'  />
+
+    <!-- SCRIPTS -->
+    <script src='/public/js/review.js'></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -24,43 +27,42 @@
     <div class="container" role="main">
         <h1 class="col-md-6 col-md-offset-3 page-header">Review Process</h1>
         <div class="form col-md-6 col-md-offset-3">
-            <form enctype="multipart/form-data" action="reviewProcess.php" method="POST" class="form webtools-form" role="form">
+            <form class="form webtools-form review-form">
                 <div class="form-group">
                     <label for="id" class="control-label">Reimbursement ID #</label>
-                    <input type="text" class="form-control" name="id" id="id">
+                    <input type="text" class="form-control" name="id" required>
                 </div>
                 <div class="form-group">
                     <label for="approve" class="control-label">Approved?</label>
-
-                    <select name="approve" id="approve" class="form-control">
-                        <option value="approved">Approved</option>
-                        <option value="denied">Denied</option>
+                    <select name="approve" class="form-control">
+                        <option value="1">Approved</option>
+                        <option value="2">Denied</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="fund" class="control-label">Fund?</label>
-
-                    <select name="fund" id="fund" class="form-control">
-                        <option value="GENERAL">GENERAL</option>
-                        <option value="CLASS">CLASS</option>
+                    <select name="fund" class="form-control">
+                        <option value="general">GENERAL</option>
+                        <option value="class">CLASS</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="reimburse" class="control-label">Reimbursed?</label>
-
-                    <select name="reimburse" id="reimburse" class="form-control">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                    <select name="reimburse" class="form-control">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="check" class="control-label">Check #</label>
-                    <input type="text" class="form-control" name="check" id="check">
+                    <input type="text" class="form-control" name="check">
                 </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary form-control">Submit</button>
                 </div>
             </form>
+            <p class='status-message'></p>
         </div>
     </div>
 </body>

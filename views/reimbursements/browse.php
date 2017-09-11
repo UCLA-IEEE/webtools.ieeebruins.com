@@ -15,6 +15,10 @@
 
     <!-- STYLESHEETS -->
     <link rel='stylesheet' type='text/css' href='/public/css/style.css' />
+    <link rel='stylesheet' type='text/css' href='/public/css/form.css' />
+
+    <!-- SCRIPTS -->
+    <script src='/public/js/browse.js'></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -22,14 +26,13 @@
 
     <h1 class="page-header text-center">Browse Reimbursements</h1>
     <div class="form text-center">
-        <form method="get" class="form-inline">
+        <form class="form-inline webtools-form approval-filter">
             <div class="form-group form-group-lg">
                 <label for="filter">Filter by approval attribute:</label>
                 <select name="filter" id="filter" class="form-control">
                     <option value="approved">Approved</option>
                     <option value="denied">Denied</option>
                     <option value="pending" selected>Pending</option>
-                    <option value="reimbursed">Reimbursed</option>
                     <option value="all">All</option>
                 </select>
             </div>

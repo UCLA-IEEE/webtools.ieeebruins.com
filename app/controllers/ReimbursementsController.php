@@ -19,7 +19,20 @@ class ReimbursementsController extends Controller
     public function browse()
     {
         $reimbursement = new Reimbursement($this->databaseConnection);
-        $reimbursements = $reimbursement->find();
+
+        if ($_GET['filter'] === 'pending') {
+            $params = array('approve' => '0');
+        } else if ($_GET['filter'] === 'approved') {
+            $params = array('approve' => '1');
+        } else if ($_GET['filter'] === "denied") {
+            $params = array('approve' => '2');
+        } else if ($_GET['filter'] === 'all') {
+            $params = array();
+        }else {
+            $params = array('approve' => '0');
+        }
+
+        $reimbursements = $reimbursement->find($params);
         foreach ($reimbursements as $reimbursement) {
             $this->formatReimbursement($reimbursement);
         }
@@ -28,7 +41,11 @@ class ReimbursementsController extends Controller
 
     public function review()
     {
-        require_once VIEWS . 'reimbursements/review.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $this->getReview();
+        } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->postReview();
+        }
     }
 
     private function getReimbursements()
@@ -80,7 +97,7 @@ class ReimbursementsController extends Controller
             if (!$newReimbursement->save()) {
                 $this->respond('failure', 'Failed to save reimbursement into the database!');
             } else {
-                $this->respond('success', 'Successfully saved reimbursement!');
+                $this->respond('success', 'Successfully saved reimbursement! Feel free to submit another one.');
             }
         }
     }
@@ -125,10 +142,35 @@ class ReimbursementsController extends Controller
         if ($reimbursement->reimbursed === '0') {
             $reimbursement->reimbursed = 'No';
         } else {
-            $reimbursement->reimbursed = 'Yes. <br />Check# :' . $reimbursement->check;
+            $reimbursement->reimbursed = 'Yes. <br />Check# ' . $reimbursement->check;
         }
 
         // remove check field from reimbursement object
         unset($reimbursement->check);
+    }
+
+    private function getReview()
+    {
+        require_once VIEWS . 'reimbursements/review.php';
+    }
+
+    private function postReview()
+    {
+        if ($_POST['approve'] === '2' && ($_POST['reimbursed'] == "1" || $_POST['check'] !== '')) {
+            $this->respond('failure', "You can't deny a reimbursement and reimburse an individual!");
+            exit;
+        }
+
+        if ($_POST['reimbursed'] === '1' && $_POST['check'] === '') {
+            $this->respond('failure', "You cannot reimburse someone without a check number.");
+            exit;
+        }
+
+        $reimbursement = new Reimbursement($this->databaseConnection);
+        if (!$reimbursement->updateReimbursementByReview()) {
+            $this->respond('failure', 'Failed to update reimbursement record!');
+        } else {
+            $this->respond('success', 'Successfully edited reimbursement record. Feel free to review another one!');
+        }
     }
 }

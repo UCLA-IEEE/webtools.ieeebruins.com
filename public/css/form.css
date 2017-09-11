@@ -17,4 +17,5 @@
 .webtools-form select:focus {
   border-color: black;
   box-shadow: none;
+  color: black;
 }

@@ -28,4 +28,18 @@ class Reimbursement extends Model
 
         return $query->execute();
     }
+
+    public function updateReimbursementByReview()
+    {
+        $sql = "UPDATE " . $this->tableName . " SET approve='" . $_POST['approve'] . "',fund='" .
+                $_POST['fund'] . "',reimbursed='" . $_POST['reimbursed'] . "'";
+        if ($_POST['check'] !== '') {
+            $sql = $sql . ",`check`=" . $_POST['check'];
+        }
+        $sql = $sql . " WHERE id=" . $_POST['id'] . ";";
+
+        $query = $this->db->prepare($sql);
+
+        return $query->execute();
+    }
 }
