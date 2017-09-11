@@ -16,6 +16,7 @@
     <!-- STYLESHEETS -->
     <link rel='stylesheet' type='text/css' href='/public/css/style.css' />
     <link rel='stylesheet' type='text/css' href='/public/css/form.css'  />
+    <link rel='stylesheet' type='text/css' href='/public/css/review.css' />
 
     <!-- SCRIPTS -->
     <script src='/public/js/review.js'></script>
@@ -25,7 +26,7 @@
     <?php include('./views/includes/navbar.php'); ?>
 
     <div class="container" role="main">
-        <h1 class="col-md-6 col-md-offset-3 page-header">Review Process</h1>
+        <h1 class="col-md-6 col-md-offset-3 page-header text-center">Review Process</h1>
         <div class="form col-md-6 col-md-offset-3">
             <form class="form webtools-form review-form">
                 <div class="form-group">
@@ -63,6 +64,12 @@
                 </div>
             </form>
             <p class='status-message'></p>
+
+            <form class='nuke-form text-center'>
+                <h1>Nukes</h1>
+                <button type='submit' class='btn btn-primary form-control'>Nuke All Reimbursements and Receipts</button>
+                <p class='nuke-message'></p>
+            </form>
         </div>
     </div>
 </body>

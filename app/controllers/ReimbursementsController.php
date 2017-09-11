@@ -28,11 +28,14 @@ class ReimbursementsController extends Controller
             $params = array('approve' => '2');
         } else if ($_GET['filter'] === 'all') {
             $params = array();
-        }else {
+        } else {
             $params = array('approve' => '0');
         }
 
         $reimbursements = $reimbursement->find($params);
+        usort($reimbursements, function($a, $b) {
+            return $b->id - $a->id;
+        });
         foreach ($reimbursements as $reimbursement) {
             $this->formatReimbursement($reimbursement);
         }
@@ -105,6 +108,10 @@ class ReimbursementsController extends Controller
     private function deleteReimbursements()
     {
         $reimbursement = new Reimbursement($this->databaseConnection);
+        $reimbursements = $reimbursement->find();
+        foreach ($reimbursements as $tempReimbursement) {
+            unlink($tempReimbursement->link);
+        }
         if (!$reimbursement->remove()) {
             $this->respond('failure', 'Failed to remove reimbursements from the database!');
         } else {

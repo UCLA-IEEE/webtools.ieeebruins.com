@@ -26,7 +26,7 @@
     <?php include('./views/includes/navbar.php'); ?>
 
     <div class="container">
-        <h1 class="col-md-6 col-md-offset-3 text-center">Reimbursement Form</h1>
+        <h1 class="col-md-6 col-md-offset-3 page-header text-center">Reimbursement Form</h1>
 
         <div class="col-md-6 col-md-offset-3">
             <form class="form webtools-form reimbursement-form" method='POST' action='/reimbursements' enctype='multipart/form-data'>

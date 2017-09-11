@@ -19,4 +19,13 @@ $(() => {
   })
 
   $('input').focus(() => $('.status-message').text(''))
+
+  $('.nuke-form').submit(e => {
+    e.preventDefault()
+
+    $.ajax({ url: '/reimbursements', type: 'DELETE' }).done(res => {
+      res = JSON.parse(res)
+      $('.nuke-message').text(res.message)
+    })
+  })
 })
