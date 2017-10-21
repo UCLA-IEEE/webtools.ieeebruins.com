@@ -100,6 +100,8 @@ class ReimbursementsController extends Controller
             if (!$newReimbursement->save()) {
                 $this->respond('failure', 'Failed to save reimbursement into the database!');
             } else {
+                $message = 'Hello from webtools';
+                $mailStatus = mail('jeffschan97@gmail.com', 'TEST EMAIL', $message);
                 $this->respond('success', 'Successfully saved reimbursement! Feel free to submit another one.');
             }
         }
