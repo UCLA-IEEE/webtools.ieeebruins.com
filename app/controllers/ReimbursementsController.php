@@ -100,7 +100,12 @@ class ReimbursementsController extends Controller
             if (!$newReimbursement->save()) {
                 $this->respond('failure', 'Failed to save reimbursement into the database!');
             } else {
-                $message = 'Hello from webtools';
+                $to = 'treasurer@ieee.ucla.edu';
+                $subject = 'New reimbursement request at webtools.ieeebruins.org';
+                $message = 'Someone has submitted a new reimbursement request! Head over to webtools to check it out!';
+                $headers = 'From: webmaster@ieee.ucla.edu' . "\r\n" .
+                    'Reply-To: webmaster@ieee.ucla.edu' . "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
                 $mailStatus = mail('jeffschan97@gmail.com', 'TEST EMAIL', $message);
                 $this->respond('success', 'Successfully saved reimbursement! Feel free to submit another one.');
             }
