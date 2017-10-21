@@ -106,7 +106,7 @@ class ReimbursementsController extends Controller
                 $headers = 'From: webmaster@ieee.ucla.edu' . "\r\n" .
                     'Reply-To: webmaster@ieee.ucla.edu' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
-                $mailStatus = mail('jeffschan97@gmail.com', 'TEST EMAIL', $message);
+                $mailStatus = mail($to, $subject, $message, $headers);
                 $this->respond('success', 'Successfully saved reimbursement! Feel free to submit another one.');
             }
         }
