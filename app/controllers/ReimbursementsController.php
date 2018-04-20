@@ -33,9 +33,10 @@ class ReimbursementsController extends Controller
         }
 
         $reimbursements = $reimbursement->find($params);
-        usort($reimbursements, function($a, $b) {
+        function reimbursementSortPredecate($a, $b) {
             return $b->id - $a->id;
-        });
+        }
+        usort($reimbursements, "reimbursementSortPredecate");
         foreach ($reimbursements as $reimbursement) {
             $this->formatReimbursement($reimbursement);
         }
