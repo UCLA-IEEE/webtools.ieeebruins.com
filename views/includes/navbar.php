@@ -18,7 +18,7 @@
                   <li><a href="/reimbursements/review">Review</a></li>
               </ul>
           </li>
-          <li><a href='/announcements'>Announcmenets</a></li>
+          <li><a href='/announcements'>Announcements</a></li>
       </ul>
     </div>
   </div>
